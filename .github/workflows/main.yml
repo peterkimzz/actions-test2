@@ -13,4 +13,4 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Add a tag
-        uses: peterkimzz/calver@main
+        uses: peterkimzz/actions-test@main
