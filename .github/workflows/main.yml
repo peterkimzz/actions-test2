@@ -19,3 +19,16 @@ jobs:
 
       - name: Add a tag
         uses: peterkimzz/actions-test@main
+
+      - name: Send a notifiation
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          payload: |
+            {
+              "commit_message": "${{ toJSON(github.event.head_commit.message) }}",
+              "preview_url": "https://mediacat-qa.xl8.ai",
+              "deployment_mode": "Hotfix QA"
+            }
+        env:
+          # Slack workflow builder name: Hotfix Deployment Alert
+          SLACK_WEBHOOK_URL: https://hooks.slack.com/workflows/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
