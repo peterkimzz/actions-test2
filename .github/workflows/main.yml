@@ -25,7 +25,7 @@ jobs:
         with:
           payload: |
             {
-              "commit_message": "${{ toJSON(github.event.head_commit.message) }}",
+              "commit_message": ${{ toJSON(github.event.head_commit.message) }},
               "preview_url": "https://mediacat-qa.xl8.ai",
               "deployment_mode": "Hotfix QA"
             }
