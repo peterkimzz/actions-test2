@@ -27,13 +27,18 @@ jobs:
           channel-id: "#eventcat-notifications-test"
           payload: |
             {
-              "text": "MediaCAT CI/CD Notification",
               "blocks": [
+                "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "MediaCAT CI/CD Notification",
+                  }
+                },
                 {
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.head_commit.url }}"
+                    "text": "Status: ${{ job.status }}\nPreview URL: https://https://mediacat-qa.xl8.ai\nCommit message:${{ github.event.head_commit.message }}"
                   }
                 }
               ]
