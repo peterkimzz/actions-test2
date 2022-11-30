@@ -25,30 +25,11 @@ jobs:
         uses: slackapi/slack-github-action@v1.23.0
         with:
           channel-id: "#eventcat-notifications-test"
-          payload: |
-            {
-              "blocks": [
-                "type": "header",
-                  "text": {
-                    "type": "plain_text",
-                    "text": "MediaCAT CI/CD Notification",
-                  }
-                },
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "Status: ${{ job.status }}\nPreview URL: https://https://mediacat-qa.xl8.ai\nCommit message:${{ github.event.head_commit.message }}"
-                  }
-                }
-              ]
-            }
-
-          # slack-message: |
-          #   MediaCAT CI/CD Notification
-          #   Status: ${{ job.status }}
-          #   Preview URL: https://mediacat-qa.xl8.ai
-          #   Commit message: ${{ github.event.head_commit.message }}
+          slack-message: |
+            MediaCAT CI/CD Notification
+            Status: ${{ job.status }}
+            Preview URL: https://mediacat-qa.xl8.ai
+            Commit message: ${{ github.event.head_commit.message }}
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
