@@ -24,13 +24,26 @@ jobs:
         id: slack
         uses: slackapi/slack-github-action@v1.23.0
         with:
-          # See also: https://api.slack.com/methods/chat.postMessage#channels
           channel-id: "#eventcat-notifications-test"
-          slack-message: |
-            **[MediaCAT CI/CD Notification]**
-            Status: ${{ job.status }}
-            Preview URL: https://mediacat-qa.xl8.ai
-            Commit message: ${{ github.event.head_commit.message }}
+          payload: |
+            {
+              "text": "MediaCAT CI/CD Notification",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.head_commit.url }}"
+                  }
+                }
+              ]
+            }
+
+          # slack-message: |
+          #   MediaCAT CI/CD Notification
+          #   Status: ${{ job.status }}
+          #   Preview URL: https://mediacat-qa.xl8.ai
+          #   Commit message: ${{ github.event.head_commit.message }}
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
