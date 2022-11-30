@@ -29,7 +29,8 @@ jobs:
             MediaCAT CI/CD Notification
             Status: ${{ job.status }}
             Preview URL: https://mediacat-qa.xl8.ai
-            Commit message: ${{ github.event.head_commit.message }}
+            Commit message: 
+            ${{ github.event.head_commit.message }}
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
