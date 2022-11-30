@@ -27,8 +27,9 @@ jobs:
           # See also: https://api.slack.com/methods/chat.postMessage#channels
           channel-id: "#eventcat-notifications-test"
           slack-message: |
-            [MediaCAT GitHub Notification]\nStatus: ${{ job.status }}\n
-            Preview URL: https://mediacat-qa.xl8.ai\n
+            **[MediaCAT CI/CD Notification]**
+            Status: ${{ job.status }}
+            Preview URL: https://mediacat-qa.xl8.ai
             Commit message: ${{ github.event.head_commit.message }}
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
